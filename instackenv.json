@@ -12,7 +12,7 @@
             "capabilities": "profile:control,boot_option:local",
             "pm_type":"pxe_ipmitool",
             "pm_user":"admin",
-            "pm_password":"Cisco123",
+            "pm_password":"",
             "pm_addr":"172.22.7.19"
         },
         {
@@ -27,7 +27,7 @@
             "capabilities": "profile:compute,boot_option:local",
             "pm_type":"pxe_ipmitool",
             "pm_user":"admin",
-            "pm_password":"Cisco123",
+            "pm_password":"",
             "pm_addr":"172.22.7.26"
         }
     ]
