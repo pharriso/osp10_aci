@@ -1,20 +1,19 @@
 # Red Hat OSP10 Integration with ACI 2.2(2e)
 
-These templates can be used to deploy OSP10 with ACI in unified mode
+These templates can be used to deploy OSP10 with ACI in unified mode. This deploys a very basic overcloud to just prove ACI integration with RHOSP10.
 
 ## Pre-Reqs
 
 Install undercloud. Standard install with nothing exciting
 
---- Install ACI TripleO patch ---
-
+## Install ACI TripleO patch
 
 Install Cisco tripleo patch rpm on undercloud - We tested with aci-tripleo-patch-10.0-7 
 
 NOTE! There is a problem with the yaml files provided by the rpm (fixed upstream) which means that the ACI config is not re-applied when the
 stack is updated. Copy apic_puppet.yaml from the git repo to /opt/aci-tripleo-patch/puppet/ to fix this.
 
---- Modify Overcloud images ---
+## Modify Overcloud images
 
 Download the plugin tar file from Cisco as well and unpack the contents into /home/stack/aci_patch
 
@@ -28,6 +27,6 @@ The process modifies the images and then uploads them into glance for us in the 
 
 ## Installation
 
-Copy template files into /home/stack/templates
+Copy template files into /home/stack/templates and modify as required. 
 
 Run deployment as per deploy.sh file
