@@ -4,7 +4,9 @@ These templates can be used to deploy OSP10 with ACI in unified mode. This deplo
 
 ## Pre-Reqs
 
-Install undercloud. Standard install with nothing exciting
+Install undercloud. Standard install with nothing exciting.
+
+Obtain OpenStack Director support files and ACI Plugin tar file from Cisco website - https://software.cisco.com/portal/pub/download/portal/select.html?&mdfid=285968390&softwareid=286304714
 
 ## Install ACI TripleO patch
 
@@ -15,11 +17,15 @@ stack is updated. Copy apic_puppet.yaml from the git repo to /opt/aci-tripleo-pa
 
 ## Modify Overcloud images
 
-Download the plugin tar file from Cisco as well and unpack the contents into /home/stack/aci_patch
+Unpack the contents of the Cisco ACI plugin tar file into /home/stack/aci_patch
 
-* Need to document what I did to ensure agent-ovs was installed in overcloud images *
+We also need to download later versions of boost as the versions provided by the Cisco tar file cause dependency issues:
 
-There is a small python program which modifies the overcloud images - /opt/aci-tripleo-patch/bin/apply_tripleo_aci_patch.py
+yum install boost-chrono --downloadonly --downloaddir=/tmp/boost
+
+Remove boost* packages from /opt/aci-tripleo-patch and copy in boost packages from /tmp/boost
+
+There is a small python program which we can run that modifies the overcloud images - /opt/aci-tripleo-patch/bin/apply_tripleo_aci_patch.py
 
 The script expects to find our default overcloud images in /home/stack/images
 
