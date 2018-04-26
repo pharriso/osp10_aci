@@ -1,0 +1,34 @@
+{
+    "nodes":[
+        {
+            "mac":[
+                "00:25:b5:f0:00:cf"
+            ],
+            "name":"controller-1",
+            "cpu":"4",
+            "memory":"6144",
+            "disk":"40",
+            "arch":"x86_64",
+            "capabilities": "profile:control,boot_option:local",
+            "pm_type":"pxe_ipmitool",
+            "pm_user":"admin",
+            "pm_password":"Cisco123",
+            "pm_addr":"172.22.7.19"
+        },
+        {
+            "mac":[
+                "00:25:b5:f0:00:af"
+            ],
+            "name":"compute-1",
+            "cpu":"4",
+            "memory":"6144",
+            "disk":"40",
+            "arch":"x86_64",
+            "capabilities": "profile:compute,boot_option:local",
+            "pm_type":"pxe_ipmitool",
+            "pm_user":"admin",
+            "pm_password":"Cisco123",
+            "pm_addr":"172.22.7.26"
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+# A Heat environment file which can be used to enable a
+# a Cisco Apic GBP/ML2, configured via puppet
+resource_registry:
+    OS::TripleO::ControllerExtraConfigPre: /opt/aci-tripleo-patch/puppet/cisco-apic.yaml
+    OS::TripleO::ComputeExtraConfigPre: /opt/aci-tripleo-patch/puppet/cisco-apic.yaml
+
+parameter_defaults:
+  NeutronCorePlugin: 'ml2plus'   
+  NeutronServicePlugins: 'group_policy,ncp,apic_aim_l3'   
+  NeutronEnableIsolatedMetadata: true   
+  EnablePackageInstall: true   
+  ACIEnableAIM: true
+  ACIYumRepo: http://192.168.124.100/acirepo 
+  ACIApicIp: '172.22.140.4,172.22.140.5,172.22.140.6'
+  ACIApicUser: 'admin'
+  ACIApicPassword: ''
+  ACIApicInfraVlan: 3912
+  ACIOpflexPeerIp: '10.0.0.30'
+  ACIOpflexRemoteIp: '10.0.0.32'
+  ACIOpflexOVSBridge: 'br-int'
+  ACIOpflexUplinkInterface: 'bond1'
+  ACIApicSystemId: 'OSP10'
+  ACIApicEntityProfile: 'AZ-Flexpod_AttEntityP'
+  ACIOpflexEncapMode: 'vlan'
+  ACIOpflexVlanRange: '1200:1300'
+  ACIUseLLDPDiscovery: 'false'
+  ACIOpflexOptimizedMetadata: 'true'
+  ACIOpflexMechanism: 'cisco_apic_ml2'
+  ACIL3Out: 'SESK-L3OUT-BGP:OSP10_L3OUT:192.168.128.1/24'
+  NeutronEnableForceMetadata: true

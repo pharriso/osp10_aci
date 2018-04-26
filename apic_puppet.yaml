@@ -1,0 +1,63 @@
+heat_template_version: 2014-10-16
+
+description: >
+  Configure neutron and opflex
+
+parameters:
+  servers:
+    type: json
+  DeployIdentifier:
+    type: string
+  ConfigDebug:
+    default: false
+    description: Enable puppet debugging
+    type: boolean
+
+resources:
+  ExtraConfig:
+    type: OS::Heat::SoftwareConfig
+    properties:
+      group: puppet
+      options:
+        enable_debug: {get_param: ConfigDebug}
+        enable_hiera: True
+        enable_facter: False
+      inputs:
+        - name: deploy_identifier
+      outputs:
+      - name: result
+      config:
+        get_file: manifests/apic.pp
+
+  ExtraConfig1:
+    type: OS::Heat::SoftwareConfig
+    properties:
+      group: puppet
+      options:
+        enable_debug: {get_param: ConfigDebug}
+        enable_hiera: True
+        enable_facter: False
+      inputs:
+        - name: deploy_identifier
+      outputs:
+      - name: result
+      config:
+        get_file: manifests/compute_metadata.pp
+
+  ExtraDeployments:
+    type: OS::Heat::SoftwareDeployments
+    properties:
+      servers:  {get_param: servers}
+      config: {get_resource: ExtraConfig}
+      actions: ['CREATE','UPDATE']
+      input_values:
+        deploy_identifier: {get_param: DeployIdentifier}
+
+  ExtraDeployments1:
+    type: OS::Heat::SoftwareDeployments
+    properties:
+      servers:  {get_param: servers}
+      config: {get_resource: ExtraConfig1}
+      actions: ['CREATE','UPDATE']
+      input_values:
+        deploy_identifier: {get_param: DeployIdentifier}

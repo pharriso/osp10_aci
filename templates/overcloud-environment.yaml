@@ -1,0 +1,14 @@
+parameter_defaults:
+  AdminPassword: 'redhat123'
+  TimeZone: 'Europe/London' 
+  OvercloudControlFlavor: control
+  OvercloudComputeFlavor: compute
+  OvercloudCephStorageFlavor: ceph-storage
+  ControllerCount: 1
+  ComputeCount: 1
+  CephStorageCount: 0
+
+  #controllerExtraConfig:
+  #  neutron::config::plugin_ml2_config:
+  #           ml2_cisco_apic/apic_name_mapping:
+  #                value: 'use_name'
