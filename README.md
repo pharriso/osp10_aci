@@ -36,3 +36,17 @@ The process modifies the images and then uploads them into glance for us in the 
 Copy template files into /home/stack/templates and modify as required. 
 
 Run deployment as per deploy.sh file
+
+## Post Install
+
+Within ACI you should now have a VMM Domain. Using these example templates you should see a VMM called OSP10 (derived from ACIApicSystemId).
+
+From the controller you can validate the creation of the VMM domain:
+
+aimctl manager vmm-domain-find
+
++-----------+--------+
+| type      | name   |
+|-----------+--------|
+| OpenStack | OSP10  |
++-----------+--------+
