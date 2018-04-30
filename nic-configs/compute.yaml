@@ -127,19 +127,23 @@ resources:
                 -
                   type: linux_bond
                   name: bond1
+                  mtu: 9000
                   #ovs_options: {get_param: BondInterfaceOvsOptions}
                   bonding_options: "mode=1 miimon=100"
                   members:
                     -
                       type: interface
                       name: enp6s0
+                      mtu: 9000
                       primary: true
                     -
                       type: interface
                       name: enp7s0
+                      mtu: 9000
                 -
                   type: vlan
                   device: bond1
+                  mtu: 9000
                   vlan_id: {get_param: InternalApiNetworkVlanID}
                   addresses:
                     -
@@ -147,6 +151,7 @@ resources:
                 -
                   type: vlan
                   device: bond1
+                  mtu: 9000
                   vlan_id: {get_param: StorageNetworkVlanID}
                   addresses:
                     -
@@ -154,6 +159,7 @@ resources:
                 -
                   type: vlan
                   device: bond1
+                  mtu: 9000
                   vlan_id: {get_param: TenantNetworkVlanID}
                   addresses:
                     -

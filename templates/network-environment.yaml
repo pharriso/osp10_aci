@@ -56,5 +56,7 @@ parameter_defaults:
   NeutronEnableL3Agent: False
   NeutronEnableOVSAgent: False
   NeutronNetworkVLANRanges: datacentre:1200:1300
+  # Set MTU
+  NeutronGlobalPhysnetMtu: 8000
   # Customize bonding options, e.g. "mode=4 lacp_rate=1 updelay=1000 miimon=100"
   BondInterfaceOvsOptions: "mode=1"
